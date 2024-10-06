@@ -3,11 +3,18 @@ import json
 from nltk import word_tokenize 
 import re
 
+import os
+
+# Ensure correct base directory
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+
+
 cfg = {
-    'raw_data_dir': '../data/',
-    'train_path': '/home/sushrut/IIITH/Sem3/ANLP/Project/Contract NLI/data/train.json',
-    'test_path': '/home/sushrut/IIITH/Sem3/ANLP/Project/Contract NLI/data/train.json',
-    'dev_path': '/home/sushrut/IIITH/Sem3/ANLP/Project/Contract NLI/data/train.json'
+    'raw_data_dir': os.path.join(BASE_DIR, 'data/'),
+    'train_path': os.path.join(BASE_DIR, 'data/train.json'),
+    'test_path': os.path.join(BASE_DIR, 'data/test.json'),
+    'dev_path': os.path.join(BASE_DIR, 'data/dev.json'),
+    'a': "a"
 }
 
 def load_data(path: str) -> json:
