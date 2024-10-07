@@ -15,25 +15,18 @@ def get_hypothesis(data: dict) -> list:
     return hypothesis, majority_ct
 
 def run_inference(test_data: dict, majority_ct: dict) -> dict:
-    predictions = {}
-    true_labels = {}
+    predictions = []
+    true_labels = []
     
     for doc in test_data['documents']:
         for key, value in doc['annotation_sets'][0]['annotations'].items():
             # Get the true label for the hypothesis
-            true_labels[key] = value['choice']
-            
-            # Predict using the majority class from the training set
-            if key in majority_ct:
-                predictions[key] = majority_ct[key]
-            else:
-                predictions[key] = 'NotMentioned'
+            true_labels.append(value['choice'])
+            predictions.append(majority_ct[key])
     
     return predictions, true_labels
 
-def evaluate(predictions: dict, true_labels: dict):
-    y_true = list(true_labels.values())
-    y_pred = list(predictions.values())
+def evaluate(y_pred: dict, y_true: dict):
     
     print(classification_report(y_true, y_pred))
     
@@ -66,6 +59,5 @@ if __name__ == "__main__":
     
     # Run inference on test data using the majority vote
     predictions, true_labels = run_inference(test, majority_ct)
-    
     # Evaluate predictions
     evaluate(predictions, true_labels)
