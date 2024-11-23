@@ -36,6 +36,8 @@
 
 ## Approach 
 
+<img src="./resource/Flowchart.png" alt="Flow_Chart" />
+
 - Span-NLI BERT model to handle both NLI classification and span detection in a unified architecture. BERT-based models have revolutionized NLP tasks due to their ability to capture contextualized word representations, making them particularly suitable for tasks like NLI and evidence span detection, especially in legal language where context is paramount.
 - Span-NLI BERT will combine the strengths of pre-trained language models (BERT) and task-specific fine-tuning to jointly address both NLI classification and span detection.
 - The model will likely improve over the current baselines by considering deeper semantic and syntactic features within contract documents.
@@ -47,4 +49,6 @@
 - Contains Train,Test and Dev datasets
 #### baselines :
 - Code for all baselines and its readme
+#### span_nli_bert :
+- Code for span nli vert model
 
